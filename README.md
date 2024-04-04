@@ -58,7 +58,10 @@ We will build a BookStore application using Spring Boot, Spring Cloud, and Docke
 
 ## Other Learning Resources
 * [SivaLabs Blog](https://sivalabs.in)
-* [A Pragmatic Approach to Software Design](https://www.sivalabs.in/tomato-architecture-pragmatic-approach-to-software-design/)
+  * [Spring Boot Tutorials](https://www.sivalabs.in/spring-boot-tutorials/)
+  * [Kubernetes Tutorials](https://www.sivalabs.in/getting-started-with-kubernetes/)
+  * [Spring Security OAuth 2.0 Tutorials](https://www.sivalabs.in/spring-security-oauth2-tutorial-introduction/)
+  * [A Pragmatic Approach to Software Design](https://www.sivalabs.in/tomato-architecture-pragmatic-approach-to-software-design/)
 * [SivaLabs YouTube Channel](https://www.youtube.com/c/SivaLabs)
   * [Spring Boot Tips Series](https://www.youtube.com/playlist?list=PLuNxlOYbv61jFFX2ARQKnBgkMF6DvEEic)
   * [Spring Boot + Kubernetes Series](https://www.youtube.com/playlist?list=PLuNxlOYbv61h66_QlcjCEkVAj6RdeplJJ)
