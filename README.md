@@ -1,5 +1,7 @@
 # Spring Boot Microservices Course
-This repository contains the source code for the Spring Boot Microservices course.
+This repository contains the source code for the [Spring Boot Microservices Course](https://www.youtube.com/playlist?list=PLuNxlOYbv61g_ytin-wgkecfWDKVCEDmB).
+
+![Spring Boot Microservices course](docs/youtube-thumbnail.png)
 
 We will build a BookStore application using Spring Boot, Spring Cloud, and Docker.
 
@@ -49,8 +51,16 @@ We will build a BookStore application using Spring Boot, Spring Cloud, and Docke
 * Deployment to Kubernetes (Membership)
 
 ## Local Development Setup
-* Install Java 21
-* Install Docker Desktop
-* Install IntelliJ IDEA or any of your favorite IDE
-* Install Postman or any REST Client
+* Install Java 21. Recommend using [SDKMAN](https://sdkman.io/) for [managing Java versions](https://youtu.be/ZywEiw3EO8A).
+* Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+* Install [IntelliJ IDEA](https://www.jetbrains.com/idea) or any of your favorite IDE
+* Install [Postman](https://www.postman.com/) or any REST Client
 
+## Other Learning Resources
+* [SivaLabs Blog](https://sivalabs.in)
+* [A Pragmatic Approach to Software Design](https://www.sivalabs.in/tomato-architecture-pragmatic-approach-to-software-design/)
+* [SivaLabs YouTube Channel](https://www.youtube.com/c/SivaLabs)
+  * [Spring Boot Tips Series](https://www.youtube.com/playlist?list=PLuNxlOYbv61jFFX2ARQKnBgkMF6DvEEic)
+  * [Spring Boot + Kubernetes Series](https://www.youtube.com/playlist?list=PLuNxlOYbv61h66_QlcjCEkVAj6RdeplJJ)
+  * [Spring Boot : The Missing Guide](https://www.youtube.com/playlist?list=PLuNxlOYbv61jZL1IiciTgWezZoqEp4WXh)
+  * [Java Testing Made Easy: Learn writing Unit, Integration, E2E & Performance Tests](https://www.youtube.com/playlist?list=PLuNxlOYbv61jtHHFHBOc9N7Dg5jn013ix)
