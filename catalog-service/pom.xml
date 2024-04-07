@@ -13,11 +13,15 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>catalog-service</name>
 	<description>Catalog Service</description>
+
 	<properties>
 		<java.version>21</java.version>
-		<spotless.version>2.43.0</spotless.version>
+		<spotless.version>${spotless-maven-plugin.version}</spotless.version>
+		<springdoc-openapi.version>2.5.0</springdoc-openapi.version>
+		<spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
 		<dockerImageName>sivaprasadreddy/bookstore-${project.artifactId}</dockerImageName>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -42,7 +46,7 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>2.5.0</version>
+			<version>${springdoc-openapi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -137,7 +141,7 @@
 			<plugin>
 				<groupId>com.diffplug.spotless</groupId>
 				<artifactId>spotless-maven-plugin</artifactId>
-				<version>2.43.0</version>
+				<version>${spotless-maven-plugin.version}</version>
 				<configuration>
 					<java>
 						<importOrder />
