@@ -5,6 +5,7 @@ vars:
   MVNW: '{{if eq .GOOS "windows"}}mvnw.cmd{{else}}./mvnw{{end}}'
   DC_DIR: "deployment/docker-compose"
   INFRA_DC_FILE: "{{.DC_DIR}}/infra.yml"
+  APPS_DC_FILE: "{{.DC_DIR}}/apps.yml"
 
 tasks:
   default:
@@ -21,16 +22,16 @@ tasks:
 
   build:
     cmds:
-      - "{{.MVNW}} verify"
+      - "{{.MVNW}} -pl catalog-service spring-boot:build-image -DskipTests"
 
   start_infra:
     cmds:
-      - docker compose -f "{{.INFRA_DC_FILE}}" up -d
+      - "docker compose -f {{.INFRA_DC_FILE}} up -d"
 
   stop_infra:
     cmds:
-      - docker compose -f "{{.INFRA_DC_FILE}}" stop
-      - docker compose -f "{{.INFRA_DC_FILE}}" rm -f
+      - "docker compose -f {{.INFRA_DC_FILE}} stop"
+      - "docker compose -f {{.INFRA_DC_FILE}} rm -f"
 
   restart_infra:
     cmds:
@@ -38,8 +39,24 @@ tasks:
       - task: sleep
       - task: start_infra
 
+  start:
+    deps: [build]
+    cmds:
+      - "docker compose -f {{.INFRA_DC_FILE}} -f {{.APPS_DC_FILE}} up -d"
+
+  stop:
+    cmds:
+      - "docker compose -f {{.INFRA_DC_FILE}} -f {{.APPS_DC_FILE}} stop"
+      - "docker compose -f {{.INFRA_DC_FILE}} -f {{.APPS_DC_FILE}} rm -f"
+
+  restart:
+    cmds:
+      - task: stop
+      - task: sleep
+      - task: start
+
   sleep:
     vars:
-      DURATION: '{{default 5 .DURATION}}'
+      DURATION: "{{default 5 .DURATION}}"
     cmds:
       - sleep {{.DURATION}}
