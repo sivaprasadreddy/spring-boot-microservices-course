@@ -4,7 +4,7 @@ create sequence order_item_id_seq start with 1 increment by 50;
 create table orders
 (
     id                        bigint default nextval('order_id_seq') not null,
-    order_number              text not null,
+    order_number              text not null unique,
     username                  text not null,
     customer_name             text not null,
     customer_email            text not null,
