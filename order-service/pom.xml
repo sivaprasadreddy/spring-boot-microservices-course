@@ -17,8 +17,10 @@
 		<java.version>21</java.version>
 		<springdoc-openapi.version>2.5.0</springdoc-openapi.version>
 		<resilience4j.version>2.2.0</resilience4j.version>
+		<shedlock.version>5.13.0</shedlock.version>
 		<wiremock.version>3.5.2</wiremock.version>
 		<wiremock-testcontainers.version>1.0-alpha-13</wiremock-testcontainers.version>
+		<instancio.version>4.5.0</instancio.version>
 		<spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
 		<dockerImageName>sivaprasadreddy/bookstore-${project.artifactId}</dockerImageName>
 	</properties>
@@ -60,12 +62,12 @@
 		<dependency>
 			<groupId>net.javacrumbs.shedlock</groupId>
 			<artifactId>shedlock-spring</artifactId>
-			<version>5.13.0</version>
+			<version>${shedlock.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>net.javacrumbs.shedlock</groupId>
 			<artifactId>shedlock-provider-jdbc-template</artifactId>
-			<version>5.13.0</version>
+			<version>${shedlock.version}</version>
 		</dependency>
 
 		<dependency>
@@ -127,7 +129,7 @@
 		<dependency>
 			<groupId>org.instancio</groupId>
 			<artifactId>instancio-junit</artifactId>
-			<version>4.5.0</version>
+			<version>${instancio.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

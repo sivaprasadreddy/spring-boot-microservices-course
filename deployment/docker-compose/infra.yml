@@ -1,4 +1,3 @@
-version: "3.8"
 name: 'spring-boot-microservices-course'
 services:
   catalog-db:
