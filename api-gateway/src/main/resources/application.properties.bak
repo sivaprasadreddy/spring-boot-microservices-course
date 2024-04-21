@@ -1,0 +1,36 @@
+spring.application.name=api-gateway
+server.port=8989
+server.shutdown=graceful
+spring.mvc.problemdetails.enabled=true
+
+######## API Gateway Application Configuration  #########
+spring.cloud.gateway.discovery.locator.enabled=true
+spring.cloud.gateway.globalcors.cors-configurations["[/**]"].allowed-origins="*"
+spring.cloud.gateway.globalcors.cors-configurations["[/**]"].allowed-methods="*"
+spring.cloud.gateway.globalcors.cors-configurations["[/**]"].allowed-headers="*"
+spring.cloud.gateway.globalcors.cors-configurations["[/**]"].allow-credentials=true
+
+spring.cloud.gateway.routes[0].id=catalog-service
+spring.cloud.gateway.routes[0].uri=${CATALOG_SERVICE_URL:http://localhost:8081}
+spring.cloud.gateway.routes[0].predicates[0]=Path=/catalog/**
+spring.cloud.gateway.routes[0].filters[0]=RewritePath=/catalog/?(?<segment>.*), /${segment}
+
+spring.cloud.gateway.routes[1].id=orders-service
+spring.cloud.gateway.routes[1].uri=${ORDER_SERVICE_URL:http://localhost:8082}
+spring.cloud.gateway.routes[1].predicates[0]=Path=/orders/**
+spring.cloud.gateway.routes[1].filters[0]=RewritePath=/orders/?(?<segment>.*), /${segment}
+
+spring.cloud.gateway.routes[2].id=openapi
+spring.cloud.gateway.routes[2].uri=http://localhost:${server.port}
+spring.cloud.gateway.routes[2].predicates[0]=Path=/v3/api-docs/**
+spring.cloud.gateway.routes[2].filters[0]=RewritePath=/v3/api-docs/?(?<segment>.*), /${segment}/v3/api-docs
+
+######## Actuator Configuration  #########
+management.endpoints.web.exposure.include=*
+
+springdoc.swagger-ui.use-root-path=true
+#springdoc.swagger-ui.urls[0].name=catalog
+#springdoc.swagger-ui.urls[0].url=/v3/api-docs/catalog
+#springdoc.swagger-ui.urls[1].name=orders
+#springdoc.swagger-ui.urls[1].url=/v3/api-docs/orders
+
