@@ -1,0 +1,23 @@
+<div th:fragment="pagination">
+    <template x-if="products.totalPages > 1">
+    <nav aria-label="Page navigation" >
+        <ul class="pagination pagination justify-content-center">
+            <li class="page-item" :class="{ 'disabled': products.isFirst }">
+                <a class="page-link" href="#" th:href="${'/products?page=1'}">First</a>
+            </li>
+            <li class="page-item" :class="{ 'disabled': !products.hasPrevious }">
+                <a class="page-link" href="#"
+                   :href="'/products?page=' + (products.pageNumber-1)">Previous</a>
+            </li>
+            <li class="page-item" :class="{ 'disabled': !products.hasNext }">
+                <a class="page-link" href="#"
+                   :href="'/products?page=' + (products.pageNumber+1)">Next</a>
+            </li>
+            <li class="page-item" :class="{ 'disabled': products.isLast }">
+                <a class="page-link" href="#"
+                   :href="'/products?page=' + (products.totalPages)">Last</a>
+            </li>
+        </ul>
+    </nav>
+    </template>
+</div>

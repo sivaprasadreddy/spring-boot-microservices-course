@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div layout:fragment="content">
+    <div th:x-data="|initData('${pageNo}')|">
+        <div th:replace="~{fragments/pagination :: pagination}"> </div>
+        <div class="row row-cols-1 row-cols-md-5">
+            <template x-for="product in products.data">
+                <div class="col mb-3">
+                    <div class="card h-100 product">
+
+                        <img :src="product.imageUrl"
+                             class="card-img-top"
+                             height="300" width="200"
+                        />
+
+                        <div class="card-body">
+                            <h5 class="card-title"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                x-text="product.name">product.name</h5>
+                            <p class="card-text"
+                               data-toggle="tooltip"
+                               data-placement="top"
+                               x-text="'Price: $'+product.price"
+                            >product.price</p>
+                        </div>
+                        <div class="card-footer" style="background: transparent; border-top: 0;">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" @click="addToCart(product)">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</div>
+<div layout:fragment="pageScripts">
+<script src="/js/products.js"></script>
+</div>
+</body>
+</html>
