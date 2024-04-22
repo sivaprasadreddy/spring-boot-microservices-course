@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div layout:fragment="content">
+    <div x-data="initData()">
+        <div class="col-md-8 offset-md-2">
+
+            <div x-show="cart.items.length == 0">
+                <h3>Your cart is empty. <a href="/">Continue shopping</a></h3>
+            </div>
+            <div x-show="cart.items.length > 0" class="pb-3">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Sub Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <template x-for="item in cart.items">
+                        <tr>
+                            <td x-text="item.name">name</td>
+                            <td x-text="item.price">price</td>
+                            <td>
+                                <input type="number" min="0" x-model="item.quantity"
+                                       @change="updateItemQuantity(item.code, $event.target.value)"/>
+                            </td>
+                            <td x-text="item.quantity * item.price">subTotal</td>
+                        </tr>
+                    </template>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th colspan="3"></th>
+                        <th colspan="1" style="text-align: left">
+                            Total Amount: <span x-text="cart.totalAmount">cartTotal</span>
+                        </th>
+                    </tr>
+                    </tfoot>
+                </table>
+
+                <form class="row g-3" method="post" @submit.prevent="createOrder">
+                    <div class="col-md-6">
+                        <label for="customerName" class="form-label">Customer Name</label>
+                        <input type="text" class="form-control"
+                               id="customerName"
+                               name="customerName"
+                               x-model="orderForm.customer.name"
+                               value=""/>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="customerEmail" class="form-label">Customer Email</label>
+                        <input type="email" class="form-control"
+                               id="customerEmail"
+                               name="customerEmail"
+                               x-model="orderForm.customer.email"
+                               value="">
+                    </div>
+                    <div class="col-6">
+                        <label for="deliveryAddressLine1" class="form-label">Delivery Address Line 1</label>
+                        <input class="form-control"
+                               id="deliveryAddressLine1"
+                               name="deliveryAddressLine1"
+                               x-model="orderForm.deliveryAddress.addressLine1"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="deliveryAddressLine2" class="form-label">Delivery Address Line 2</label>
+                        <input class="form-control"
+                               id="deliveryAddressLine2"
+                               name="deliveryAddressLine2"
+                               x-model="orderForm.deliveryAddress.addressLine2"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="deliveryAddressCity" class="form-label">Delivery Address City</label>
+                        <input class="form-control"
+                               id="deliveryAddressCity"
+                               name="deliveryAddressCity"
+                               x-model="orderForm.deliveryAddress.city"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="deliveryAddressState" class="form-label">Delivery Address State</label>
+                        <input class="form-control"
+                               id="deliveryAddressState"
+                               name="deliveryAddressState"
+                               x-model="orderForm.deliveryAddress.state"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="deliveryAddressZipCode" class="form-label">Delivery Address ZipCode</label>
+                        <input class="form-control"
+                               id="deliveryAddressZipCode"
+                               name="deliveryAddressZipCode"
+                               x-model="orderForm.deliveryAddress.zipCode"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="deliveryAddressCountry" class="form-label">Delivery Address Country</label>
+                        <input class="form-control"
+                               id="deliveryAddressCountry"
+                               name="deliveryAddressCountry"
+                               x-model="orderForm.deliveryAddress.country"/>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Place Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div layout:fragment="pageScripts">
+    <script src="/js/cart.js"></script>
+</div>
+</body>
+</html>

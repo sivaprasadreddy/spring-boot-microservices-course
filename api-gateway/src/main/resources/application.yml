@@ -41,6 +41,8 @@ spring:
             - Path=/v3/api-docs/**
           filters:
             - RewritePath=/v3/api-docs/?(?<segment>.*), /${segment}/v3/api-docs
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Methods Access-Control-Allow-Headers RETAIN_FIRST
 
   mvc:
       problemdetails:
