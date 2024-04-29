@@ -6,6 +6,7 @@ vars:
   DC_DIR: "deployment/docker-compose"
   INFRA_DC_FILE: "{{.DC_DIR}}/infra.yml"
   APPS_DC_FILE: "{{.DC_DIR}}/apps.yml"
+  SLEEP_CMD: '{{if eq .GOOS "windows"}}timeout{{else}}sleep{{end}}'
 
 tasks:
   default:
@@ -60,4 +61,4 @@ tasks:
     vars:
       DURATION: "{{default 5 .DURATION}}"
     cmds:
-      - sleep {{.DURATION}}
+      - "{{.SLEEP_CMD}} {{.DURATION}}"
