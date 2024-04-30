@@ -24,7 +24,7 @@ services:
     container_name: order-service
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - ORDERS_CATALOG_SERVICE_URL=http://catalog-service:8081
+      - ORDERS_CATALOG_SERVICE_URL=http://api-gateway:8989/catalog
       - DB_URL=jdbc:postgresql://orders-db:5432/postgres
       - DB_USERNAME=postgres
       - DB_PASSWORD=postgres
@@ -69,6 +69,21 @@ services:
         condition: service_healthy
       mailhog:
         condition: service_started
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+
+  api-gateway:
+    image: sivaprasadreddy/bookstore-api-gateway
+    container_name: api-gateway
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - CATALOG_SERVICE_URL=http://catalog-service:8081
+      - ORDER_SERVICE_URL=http://order-service:8082
+    ports:
+      - "8989:8989"
+    restart: unless-stopped
     deploy:
       resources:
         limits:
