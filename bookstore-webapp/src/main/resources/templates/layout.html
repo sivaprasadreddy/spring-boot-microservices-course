@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>BookStore</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.css">
+    <link rel="stylesheet" href="/webjars/font-awesome/6.5.1/css/all.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<main>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#" th:href="@{/}">
+                <img src="/images/books.png" alt="Books Logo" width="40" height="40"> BookStore
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/orders" th:href="@{/orders}">
+                            Orders
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart" th:href="@{/cart}">
+                            Cart <span id="cart-item-count">(0)</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="app" class="container">
+        <div layout:fragment="content">
+            <!-- Your Page Content Here -->
+        </div>
+    </div>
+</main>
+
+<script src="/webjars/jquery/3.7.1/jquery.js"></script>
+<script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.js"></script>
+<script defer src="/webjars/alpinejs/3.13.5/dist/cdn.min.js"></script>
+<script src="/js/cartStore.js"></script>
+<script th:inline="javascript">
+/*<![CDATA[*/
+const apiGatewayUrl = /*[[${@environment.getProperty('bookstore.api-gateway-url')}]]*/ '';
+/*]]>*/
+</script>
+<div layout:fragment="pageScripts">
+</div>
+</body>
+</html>

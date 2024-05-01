@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div layout:fragment="content">
+    <div th:x-data="|initData('${orderNumber}')|">
+        <h2>Your Order placed successfully</h2>
+        <h4>Order Number: <span x-text="orderDetails.orderNumber">orderNumber</span></h4>
+        <h4>Order Status: <span x-text="orderDetails.status">status</span></h4>
+        <hr/>
+        <div class="pb-3">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Sub Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <template x-for="item in orderDetails.items">
+                    <tr>
+                        <td x-text="item.name">name</td>
+                        <td x-text="item.price">price</td>
+                        <td x-text="item.quantity">quantity</td>
+                        <td x-text="item.quantity * item.price">SubTotal</td>
+                    </tr>
+                </template>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th colspan="3"></th>
+                    <th colspan="1" style="text-align: left">
+                        Total Amount: <span x-text="orderDetails.totalAmount">totalAmount</span>
+                    </th>
+                </tr>
+                </tfoot>
+            </table>
+
+            <form class="row g-3" method="post">
+                <div class="col-md-6">
+                    <label for="customerName" class="form-label">Customer Name</label>
+                    <input type="text" class="form-control"
+                           id="customerName"
+                           name="customerName"
+                           readonly
+                           x-model="orderDetails.customer.name"
+                    />
+                </div>
+                <div class="col-md-6">
+                    <label for="customerEmail" class="form-label">Customer Email</label>
+                    <input type="email" class="form-control"
+                           id="customerEmail"
+                           name="customerEmail"
+                           readonly
+                           x-model="orderDetails.customer.email">
+                </div>
+                <div class="col-6">
+                    <label for="deliveryAddressLine1" class="form-label">Delivery Address Line 1</label>
+                    <input class="form-control"
+                           id="deliveryAddressLine1"
+                           name="deliveryAddressLine1"
+                           readonly
+                           x-model="orderDetails.deliveryAddress.addressLine1"/>
+                </div>
+                <div class="col-6">
+                    <label for="deliveryAddressLine2" class="form-label">Delivery Address Line 2</label>
+                    <input class="form-control"
+                           id="deliveryAddressLine2"
+                           name="deliveryAddressLine2"
+                           readonly
+                           x-model="orderDetails.deliveryAddress.addressLine2"/>
+                </div>
+                <div class="col-6">
+                    <label for="deliveryAddressCity" class="form-label">Delivery Address City</label>
+                    <input class="form-control"
+                           id="deliveryAddressCity"
+                           name="deliveryAddressCity"
+                           readonly
+                           x-model="orderDetails.deliveryAddress.city"/>
+                </div>
+                <div class="col-6">
+                    <label for="deliveryAddressState" class="form-label">Delivery Address State</label>
+                    <input class="form-control"
+                           id="deliveryAddressState"
+                           name="deliveryAddressState"
+                           readonly
+                           x-model="orderDetails.deliveryAddress.state"/>
+                </div>
+                <div class="col-6">
+                    <label for="deliveryAddressZipCode" class="form-label">Delivery Address ZipCode</label>
+                    <input class="form-control"
+                           id="deliveryAddressZipCode"
+                           name="deliveryAddressZipCode"
+                           readonly
+                           x-model="orderDetails.deliveryAddress.zipCode"/>
+                </div>
+                <div class="col-6">
+                    <label for="deliveryAddressCountry" class="form-label">Delivery Address Country</label>
+                    <input class="form-control"
+                           id="deliveryAddressCountry"
+                           name="deliveryAddressCountry"
+                           readonly
+                           x-model="orderDetails.deliveryAddress.country"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div layout:fragment="pageScripts">
+    <script src="/js/orderDetails.js"></script>
+</div>
+</body>
+</html>
