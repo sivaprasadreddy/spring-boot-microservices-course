@@ -18,9 +18,9 @@
 		<springdoc-openapi.version>2.5.0</springdoc-openapi.version>
 		<resilience4j.version>2.2.0</resilience4j.version>
 		<shedlock.version>5.13.0</shedlock.version>
-		<wiremock.version>3.5.2</wiremock.version>
+		<wiremock.version>3.5.4</wiremock.version>
 		<wiremock-testcontainers.version>1.0-alpha-13</wiremock-testcontainers.version>
-		<instancio.version>4.5.0</instancio.version>
+		<instancio.version>4.5.1</instancio.version>
 		<spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
 		<dockerImageName>sivaprasadreddy/bookstore-${project.artifactId}</dockerImageName>
 	</properties>
@@ -79,11 +79,6 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>io.micrometer</groupId>
-			<artifactId>micrometer-registry-prometheus</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -173,7 +168,7 @@
 		<dependency>
 			<groupId>com.github.dasniko</groupId>
 			<artifactId>testcontainers-keycloak</artifactId>
-			<version>3.3.0</version>
+			<version>3.3.1</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
