@@ -9,7 +9,6 @@ import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.PostExchange;
 
 public interface OrderServiceClient {
-
     @PostExchange("/orders/api/orders")
     OrderConfirmationDTO createOrder(
             @RequestHeader Map<String, ?> headers, @RequestBody CreateOrderRequest orderRequest);

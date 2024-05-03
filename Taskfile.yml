@@ -6,6 +6,7 @@ vars:
   DC_DIR: "deployment/docker-compose"
   INFRA_DC_FILE: "{{.DC_DIR}}/infra.yml"
   APPS_DC_FILE: "{{.DC_DIR}}/apps.yml"
+  MONITORING_DC_FILE: "{{.DC_DIR}}/monitoring.yml"
   SLEEP_CMD: '{{if eq .GOOS "windows"}}timeout{{else}}sleep{{end}}'
 
 tasks:
@@ -43,6 +44,21 @@ tasks:
       - task: stop_infra
       - task: sleep
       - task: start_infra
+
+  start_monitoring:
+    cmds:
+      - "docker compose -f {{.MONITORING_DC_FILE}} up -d"
+
+  stop_monitoring:
+    cmds:
+      - "docker compose -f {{.MONITORING_DC_FILE}} stop"
+      - "docker compose -f {{.MONITORING_DC_FILE}} rm -f"
+
+  restart_monitoring:
+    cmds:
+      - task: stop_monitoring
+      - task: sleep
+      - task: start_monitoring
 
   start:
     deps: [build]

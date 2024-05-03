@@ -26,8 +26,13 @@ spring.cloud.gateway.routes[2].predicates[0]=Path=/v3/api-docs/**
 spring.cloud.gateway.routes[2].filters[0]=RewritePath=/v3/api-docs/?(?<segment>.*), /${segment}/v3/api-docs
 
 ######## Actuator Configuration  #########
+management.info.git.mode=full
 management.endpoints.web.exposure.include=*
+management.metrics.tags.application=${spring.application.name}
+management.tracing.enabled=false
+management.tracing.sampling.probability=1.0
 
+######## Swagger Configuration  #########
 springdoc.swagger-ui.use-root-path=true
 #springdoc.swagger-ui.urls[0].name=catalog
 #springdoc.swagger-ui.urls[0].url=/v3/api-docs/catalog

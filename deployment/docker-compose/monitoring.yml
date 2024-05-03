@@ -1,0 +1,53 @@
+name: 'spring-boot-microservices-course'
+services:
+  prometheus:
+    image: prom/prometheus:v2.51.2
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command: "--config.file=/etc/prometheus/prometheus.yml"
+
+  promtail:
+    image: grafana/promtail:3.0.0
+    container_name: promtail
+    volumes:
+      - ./promtail/promtail-docker-config.yml:/etc/promtail/docker-config.yml
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: "--config.file=/etc/promtail/docker-config.yml"
+
+  loki:
+    image: grafana/loki:3.0.0
+    container_name: loki
+    command: "-config.file=/etc/loki/local-config.yaml"
+    ports:
+      - "3100:3100"
+    depends_on:
+      - promtail
+
+  tempo:
+    image: grafana/tempo:2.4.1
+    container_name: tempo
+    command: "-config.file /etc/tempo-config.yml"
+    ports:
+      - "3200:3200"     # Tempo
+      - "9411:9411"     # Zipkin
+    volumes:
+      - ./tempo/tempo.yml:/etc/tempo-config.yml
+
+  grafana:
+    image: grafana/grafana:10.4.2
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_USERS_ALLOW_SIGN_UP=false
+
+volumes:
+  grafana_data: {}
