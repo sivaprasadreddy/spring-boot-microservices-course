@@ -8,6 +8,7 @@ services:
       - DB_URL=jdbc:postgresql://catalog-db:5432/postgres
       - DB_USERNAME=postgres
       - DB_PASSWORD=postgres
+      - SWAGGER_API_GATEWAY_URL=http://api-gateway:8989/catalog
     ports:
       - "8081:8081"
     restart: unless-stopped
@@ -32,6 +33,8 @@ services:
       - RABBITMQ_PORT=5672
       - RABBITMQ_USERNAME=guest
       - RABBITMQ_PASSWORD=guest
+      - OAUTH2_SERVER_URL=http://keycloak:9191
+      - SWAGGER_API_GATEWAY_URL=http://api-gateway:8989/orders
     ports:
       - "8082:8082"
     restart: unless-stopped
@@ -95,6 +98,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - BOOKSTORE_API_GATEWAY_URL=http://api-gateway:8989
+      - OAUTH2_SERVER_URL=http://keycloak:9191
     ports:
       - "8080:8080"
     restart: unless-stopped
