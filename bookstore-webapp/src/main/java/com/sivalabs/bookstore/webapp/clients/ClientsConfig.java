@@ -3,6 +3,9 @@ package com.sivalabs.bookstore.webapp.clients;
 import com.sivalabs.bookstore.webapp.ApplicationProperties;
 import com.sivalabs.bookstore.webapp.clients.catalog.CatalogServiceClient;
 import com.sivalabs.bookstore.webapp.clients.orders.OrderServiceClient;
+import java.time.Duration;
+import org.springframework.boot.web.client.ClientHttpRequestFactories;
+import org.springframework.boot.web.client.ClientHttpRequestFactorySettings;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestClient;
@@ -19,7 +22,11 @@ class ClientsConfig {
 
     @Bean
     CatalogServiceClient catalogServiceClient(RestClient.Builder builder) {
-        RestClient restClient = builder.baseUrl(properties.apiGatewayUrl()).build();
+        RestClient restClient = builder.baseUrl(properties.apiGatewayUrl())
+                .requestFactory(ClientHttpRequestFactories.get(ClientHttpRequestFactorySettings.DEFAULTS
+                        .withConnectTimeout(Duration.ofSeconds(5))
+                        .withReadTimeout(Duration.ofSeconds(5))))
+                .build();
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(RestClientAdapter.create(restClient))
                 .build();
         return factory.createClient(CatalogServiceClient.class);
@@ -27,7 +34,11 @@ class ClientsConfig {
 
     @Bean
     OrderServiceClient orderServiceClient(RestClient.Builder builder) {
-        RestClient restClient = builder.baseUrl(properties.apiGatewayUrl()).build();
+        RestClient restClient = builder.baseUrl(properties.apiGatewayUrl())
+                .requestFactory(ClientHttpRequestFactories.get(ClientHttpRequestFactorySettings.DEFAULTS
+                        .withConnectTimeout(Duration.ofSeconds(5))
+                        .withReadTimeout(Duration.ofSeconds(5))))
+                .build();
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(RestClientAdapter.create(restClient))
                 .build();
         return factory.createClient(OrderServiceClient.class);
