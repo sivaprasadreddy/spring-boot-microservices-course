@@ -23,7 +23,8 @@ class ClientsConfig {
 
     @Bean
     RestClientCustomizer restClientCustomizer() {
-        return restClientBuilder -> restClientBuilder.baseUrl(properties.apiGatewayUrl())
+        return restClientBuilder -> restClientBuilder
+                .baseUrl(properties.apiGatewayUrl())
                 .requestFactory(ClientHttpRequestFactories.get(ClientHttpRequestFactorySettings.DEFAULTS
                         .withConnectTimeout(Duration.ofSeconds(5))
                         .withReadTimeout(Duration.ofSeconds(5))));

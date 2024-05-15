@@ -6,6 +6,8 @@ on:
       - api-gateway/**
     branches:
       - '**'
+  pull_request:
+    branches: [main]
 
 jobs:
   build:

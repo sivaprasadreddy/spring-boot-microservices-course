@@ -6,6 +6,8 @@ on:
       - notification-service/**
     branches:
       - '**'
+  pull_request:
+    branches: [main]
 
 jobs:
   build:
