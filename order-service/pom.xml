@@ -19,7 +19,7 @@
 		<resilience4j.version>2.2.0</resilience4j.version>
 		<shedlock.version>5.13.0</shedlock.version>
 		<wiremock.version>3.5.4</wiremock.version>
-		<wiremock-testcontainers.version>1.0-alpha-13</wiremock-testcontainers.version>
+		<wiremock-testcontainers.version>1.0-alpha-14</wiremock-testcontainers.version>
 		<instancio.version>4.5.1</instancio.version>
 		<spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
 		<dockerImageName>sivaprasadreddy/bookstore-${project.artifactId}</dockerImageName>
