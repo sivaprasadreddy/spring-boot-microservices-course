@@ -5,7 +5,7 @@ on:
     paths:
       - api-gateway/**
     branches:
-      - '**'
+      - 'main'
   pull_request:
     branches: [main]
 
