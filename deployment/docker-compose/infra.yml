@@ -1,7 +1,7 @@
 name: 'spring-boot-microservices-course'
 services:
   catalog-db:
-    image: postgres:16-alpine
+    image: postgres:17-alpine
     container_name: catalog-db
     environment:
       - POSTGRES_USER=postgres
@@ -20,7 +20,7 @@ services:
           memory: 500m
 
   orders-db:
-    image: postgres:16-alpine
+    image: postgres:17-alpine
     container_name: orders-db
     environment:
       - POSTGRES_USER=postgres
@@ -39,7 +39,7 @@ services:
           memory: 500m
 
   bookstore-rabbitmq:
-    image: rabbitmq:3.12.11-management
+    image: rabbitmq:4.0.4-management
     container_name: bookstore-rabbitmq
     environment:
       - RABBITMQ_DEFAULT_USER=guest
@@ -58,7 +58,7 @@ services:
           memory: 500m
 
   notifications-db:
-    image: postgres:16-alpine
+    image: postgres:17-alpine
     container_name: notifications-db
     environment:
       - POSTGRES_USER=postgres
