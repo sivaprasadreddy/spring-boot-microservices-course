@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.5</version>
+        <version>3.4.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sivalabs</groupId>
@@ -79,12 +79,12 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
-            <version>6.5.2</version>
+            <version>6.7.1</version>
         </dependency>
         <dependency>
             <groupId>org.webjars.npm</groupId>
             <artifactId>alpinejs</artifactId>
-            <version>3.13.10</version>
+            <version>3.14.3</version>
         </dependency>
 
         <dependency>

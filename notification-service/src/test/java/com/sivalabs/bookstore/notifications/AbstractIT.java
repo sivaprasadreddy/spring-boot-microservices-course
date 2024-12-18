@@ -4,12 +4,12 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 import com.sivalabs.bookstore.notifications.domain.NotificationService;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @Import(ContainersConfig.class)
 public abstract class AbstractIT {
-    @MockBean
+    @MockitoBean
     protected NotificationService notificationService;
 }

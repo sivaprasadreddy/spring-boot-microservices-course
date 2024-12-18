@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.5</version>
+		<version>3.4.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sivalabs</groupId>
@@ -18,9 +18,9 @@
 		<springdoc-openapi.version>2.5.0</springdoc-openapi.version>
 		<resilience4j.version>2.2.0</resilience4j.version>
 		<shedlock.version>5.13.0</shedlock.version>
-		<wiremock.version>3.5.4</wiremock.version>
-		<wiremock-testcontainers.version>1.0-alpha-13</wiremock-testcontainers.version>
-		<instancio.version>4.5.1</instancio.version>
+		<wiremock.version>3.10.0</wiremock.version>
+		<wiremock-testcontainers.version>1.0-alpha-14</wiremock-testcontainers.version>
+		<instancio.version>4.8.1</instancio.version>
 		<spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
 		<dockerImageName>sivaprasadreddy/bookstore-${project.artifactId}</dockerImageName>
 	</properties>
@@ -44,6 +44,10 @@
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-database-postgresql</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -168,7 +172,7 @@
 		<dependency>
 			<groupId>com.github.dasniko</groupId>
 			<artifactId>testcontainers-keycloak</artifactId>
-			<version>3.3.1</version>
+			<version>3.5.1</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

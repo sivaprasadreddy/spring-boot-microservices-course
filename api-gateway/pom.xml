@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.5</version>
+        <version>3.4.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sivalabs.bookstore</groupId>
@@ -17,8 +17,8 @@
     <description>API Gateway</description>
     <properties>
         <java.version>21</java.version>
-        <spring-cloud.version>2023.0.1</spring-cloud.version>
-        <springdoc-openapi.version>2.5.0</springdoc-openapi.version>
+        <spring-cloud.version>2024.0.0</spring-cloud.version>
+        <springdoc-openapi.version>2.7.0</springdoc-openapi.version>
         <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
         <dockerImageName>sivaprasadreddy/bookstore-${project.artifactId}</dockerImageName>
     </properties>

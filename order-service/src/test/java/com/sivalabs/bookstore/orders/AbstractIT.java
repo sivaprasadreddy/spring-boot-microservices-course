@@ -1,9 +1,6 @@
 package com.sivalabs.bookstore.orders;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
-import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static java.util.Collections.singletonList;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
@@ -11,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import io.restassured.RestAssured;
 import java.math.BigDecimal;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.keycloak.OAuth2Constants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +19,10 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-import org.wiremock.integrations.testcontainers.WireMockContainer;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @Import(ContainersConfig.class)
@@ -48,19 +41,6 @@ public abstract class AbstractIT {
 
     @Autowired
     protected MockMvc mockMvc;
-
-    static WireMockContainer wiremockServer = new WireMockContainer("wiremock/wiremock:3.5.2-alpine");
-
-    @BeforeAll
-    static void beforeAll() {
-        wiremockServer.start();
-        configureFor(wiremockServer.getHost(), wiremockServer.getPort());
-    }
-
-    @DynamicPropertySource
-    static void configureProperties(DynamicPropertyRegistry registry) {
-        registry.add("orders.catalog-service-url", wiremockServer::getBaseUrl);
-    }
 
     @BeforeEach
     void setUp() {
