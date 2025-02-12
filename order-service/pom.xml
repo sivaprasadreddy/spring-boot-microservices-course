@@ -18,7 +18,7 @@
 		<springdoc-openapi.version>2.7.0</springdoc-openapi.version>
 		<resilience4j.version>2.2.0</resilience4j.version>
 		<shedlock.version>6.0.2</shedlock.version>
-		<wiremock.version>3.10.0</wiremock.version>
+		<wiremock.version>3.12.0</wiremock.version>
 		<wiremock-testcontainers.version>1.0-alpha-14</wiremock-testcontainers.version>
 		<instancio.version>5.2.1</instancio.version>
 		<spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
