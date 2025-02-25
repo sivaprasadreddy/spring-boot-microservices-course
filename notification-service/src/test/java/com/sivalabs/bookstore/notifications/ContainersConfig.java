@@ -31,7 +31,7 @@ public class ContainersConfig {
     @Bean
     DynamicPropertyRegistrar dynamicPropertyRegistrar(GenericContainer<?> mailhog) {
         return (registry) -> {
-            registry.add("spring.mail.host", mailhog::getContainerIpAddress);
+            registry.add("spring.mail.host", mailhog::getHost);
             registry.add("spring.mail.port", mailhog::getFirstMappedPort);
         };
     }

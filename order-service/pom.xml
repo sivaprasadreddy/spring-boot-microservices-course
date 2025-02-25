@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.0</version>
+		<version>3.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sivalabs</groupId>
@@ -15,13 +15,13 @@
 	<description>Order Service</description>
 	<properties>
 		<java.version>21</java.version>
-		<springdoc-openapi.version>2.7.0</springdoc-openapi.version>
-		<resilience4j.version>2.2.0</resilience4j.version>
-		<shedlock.version>6.0.2</shedlock.version>
-		<wiremock.version>3.10.0</wiremock.version>
+		<springdoc-openapi.version>2.8.5</springdoc-openapi.version>
+		<resilience4j.version>2.3.0</resilience4j.version>
+		<shedlock.version>6.3.0</shedlock.version>
+		<wiremock.version>3.12.0</wiremock.version>
 		<wiremock-testcontainers.version>1.0-alpha-14</wiremock-testcontainers.version>
-		<instancio.version>5.2.1</instancio.version>
-		<spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
+		<instancio.version>5.4.0</instancio.version>
+		<spotless-maven-plugin.version>2.44.3</spotless-maven-plugin.version>
 		<dockerImageName>sivaprasadreddy/bookstore-${project.artifactId}</dockerImageName>
 	</properties>
 	<dependencies>
@@ -172,7 +172,7 @@
 		<dependency>
 			<groupId>com.github.dasniko</groupId>
 			<artifactId>testcontainers-keycloak</artifactId>
-			<version>3.5.1</version>
+			<version>3.6.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -185,7 +185,6 @@
 				<configuration>
 					<image>
 						<name>${dockerImageName}</name>
-						<builder>dashaun/builder:tiny</builder>
 					</image>
 				</configuration>
 				<executions>

@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.0</version>
+        <version>3.4.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sivalabs</groupId>
@@ -17,7 +17,7 @@
     <description>bookstore-webapp</description>
     <properties>
         <java.version>21</java.version>
-        <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
+        <spotless-maven-plugin.version>2.44.3</spotless-maven-plugin.version>
         <dockerImageName>sivaprasadreddy/${project.artifactId}</dockerImageName>
     </properties>
     <dependencies>
@@ -79,12 +79,12 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
-            <version>6.7.1</version>
+            <version>6.7.2</version>
         </dependency>
         <dependency>
             <groupId>org.webjars.npm</groupId>
             <artifactId>alpinejs</artifactId>
-            <version>3.14.3</version>
+            <version>3.14.8</version>
         </dependency>
 
         <dependency>
@@ -118,7 +118,6 @@
                 <configuration>
                     <image>
                         <name>${dockerImageName}</name>
-                        <builder>dashaun/builder:tiny</builder>
                     </image>
                 </configuration>
                 <executions>

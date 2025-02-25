@@ -46,9 +46,7 @@ We will build a BookStore application using Spring Boot, Spring Cloud, and Docke
 * Local Development Setup using Docker, Docker Compose and Testcontainers
 * Testing using JUnit 5, RestAssured, Testcontainers, Awaitility, WireMock
 * Building Web Application using Thymeleaf, Alpine.js, Bootstrap
-* Monitoring & Observability using Grafana, Prometheus, Loki, Tempo (Membership)
-* Kubernetes Basics (Membership)
-* Deployment to Kubernetes (Membership)
+* Monitoring & Observability using Grafana, Prometheus, Loki, Tempo
 
 ## Local Development Setup
 * Install Java 21. Recommend using [SDKMAN](https://sdkman.io/) for [managing Java versions](https://youtu.be/ZywEiw3EO8A).

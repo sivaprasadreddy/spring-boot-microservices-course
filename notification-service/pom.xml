@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.0</version>
+        <version>3.4.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sivalabs</groupId>
@@ -17,7 +17,7 @@
     <description>notification-service</description>
     <properties>
         <java.version>21</java.version>
-        <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
+        <spotless-maven-plugin.version>2.44.3</spotless-maven-plugin.version>
         <dockerImageName>sivaprasadreddy/bookstore-${project.artifactId}</dockerImageName>
     </properties>
     <dependencies>
@@ -122,7 +122,6 @@
                 <configuration>
                     <image>
                         <name>${dockerImageName}</name>
-                        <builder>dashaun/builder:tiny</builder>
                     </image>
                 </configuration>
                 <executions>
