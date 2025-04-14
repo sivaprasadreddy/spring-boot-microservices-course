@@ -21,7 +21,7 @@
 		<wiremock.version>3.12.0</wiremock.version>
 		<wiremock-testcontainers.version>1.0-alpha-14</wiremock-testcontainers.version>
 		<instancio.version>5.4.0</instancio.version>
-		<spotless-maven-plugin.version>2.44.3</spotless-maven-plugin.version>
+		<spotless-maven-plugin.version>2.44.4</spotless-maven-plugin.version>
 		<dockerImageName>sivaprasadreddy/bookstore-${project.artifactId}</dockerImageName>
 	</properties>
 	<dependencies>
