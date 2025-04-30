@@ -4,8 +4,7 @@ import com.sivalabs.bookstore.webapp.ApplicationProperties;
 import com.sivalabs.bookstore.webapp.clients.catalog.CatalogServiceClient;
 import com.sivalabs.bookstore.webapp.clients.orders.OrderServiceClient;
 import java.time.Duration;
-import org.springframework.boot.web.client.ClientHttpRequestFactories;
-import org.springframework.boot.web.client.ClientHttpRequestFactorySettings;
+import org.springframework.boot.http.client.ClientHttpRequestFactoryBuilder;
 import org.springframework.boot.web.client.RestClientCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,11 +22,14 @@ class ClientsConfig {
 
     @Bean
     RestClientCustomizer restClientCustomizer() {
-        return restClientBuilder -> restClientBuilder
-                .baseUrl(properties.apiGatewayUrl())
-                .requestFactory(ClientHttpRequestFactories.get(ClientHttpRequestFactorySettings.DEFAULTS
-                        .withConnectTimeout(Duration.ofSeconds(5))
-                        .withReadTimeout(Duration.ofSeconds(5))));
+        var requestFactory = ClientHttpRequestFactoryBuilder.simple()
+                .withCustomizer(c -> {
+                    c.setConnectTimeout(Duration.ofSeconds(5));
+                    c.setReadTimeout(Duration.ofSeconds(5));
+                })
+                .build();
+        return restClientBuilder ->
+                restClientBuilder.baseUrl(properties.apiGatewayUrl()).requestFactory(requestFactory);
     }
 
     @Bean
