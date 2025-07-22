@@ -14,8 +14,8 @@ import org.wiremock.integrations.testcontainers.WireMockContainer;
 
 @TestConfiguration(proxyBeanMethods = false)
 public class ContainersConfig {
-    static String KEYCLOAK_IMAGE = "quay.io/keycloak/keycloak:26.0";
-    static String realmImportFile = "/test-bookstore-realm.json";
+    static String KEYCLOAK_IMAGE = "quay.io/keycloak/keycloak:26.3.0";
+    static String realmImportFile = "/bookstore-realm.json";
     static String realmName = "bookstore";
 
     static WireMockContainer wiremockServer = new WireMockContainer("wiremock/wiremock:3.5.2-alpine");
