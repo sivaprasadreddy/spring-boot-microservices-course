@@ -6,13 +6,13 @@ import java.math.BigDecimal;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
 @DataJpaTest(
         properties = {
             "spring.test.database.replace=none",
-            "spring.datasource.url=jdbc:tc:postgresql:16-alpine:///db",
+            "spring.datasource.url=jdbc:tc:postgresql:18-alpine:///db",
         })
 // @Import(ContainersConfig.class)
 @Sql("/test-data.sql")

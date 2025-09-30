@@ -1,7 +1,5 @@
 package com.sivalabs.bookstore.orders.domain;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sivalabs.bookstore.orders.domain.models.OrderCancelledEvent;
 import com.sivalabs.bookstore.orders.domain.models.OrderCreatedEvent;
 import com.sivalabs.bookstore.orders.domain.models.OrderDeliveredEvent;
@@ -13,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.json.JsonMapper;
 
 @Service
 @Transactional
@@ -21,15 +21,13 @@ public class OrderEventService {
 
     private final OrderEventRepository orderEventRepository;
     private final OrderEventPublisher orderEventPublisher;
-    private final ObjectMapper objectMapper;
+    private final JsonMapper jsonMapper;
 
     OrderEventService(
-            OrderEventRepository orderEventRepository,
-            OrderEventPublisher orderEventPublisher,
-            ObjectMapper objectMapper) {
+            OrderEventRepository orderEventRepository, OrderEventPublisher orderEventPublisher, JsonMapper jsonMapper) {
         this.orderEventRepository = orderEventRepository;
         this.orderEventPublisher = orderEventPublisher;
-        this.objectMapper = objectMapper;
+        this.jsonMapper = jsonMapper;
     }
 
     void save(OrderCreatedEvent event) {
@@ -110,16 +108,16 @@ public class OrderEventService {
 
     private String toJsonPayload(Object object) {
         try {
-            return objectMapper.writeValueAsString(object);
-        } catch (JsonProcessingException e) {
+            return jsonMapper.writeValueAsString(object);
+        } catch (JacksonException e) {
             throw new RuntimeException(e);
         }
     }
 
     private <T> T fromJsonPayload(String json, Class<T> type) {
         try {
-            return objectMapper.readValue(json, type);
-        } catch (JsonProcessingException e) {
+            return jsonMapper.readValue(json, type);
+        } catch (JacksonException e) {
             throw new RuntimeException(e);
         }
     }

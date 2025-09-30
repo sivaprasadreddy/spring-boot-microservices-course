@@ -12,7 +12,6 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sivalabs.bookstore.orders.domain.OrderService;
 import com.sivalabs.bookstore.orders.domain.SecurityService;
 import com.sivalabs.bookstore.orders.domain.models.CreateOrderRequest;
@@ -22,11 +21,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+import tools.jackson.databind.json.JsonMapper;
 
 @WebMvcTest(OrderController.class)
 class OrderControllerUnitTests {
@@ -40,7 +40,7 @@ class OrderControllerUnitTests {
     private MockMvc mockMvc;
 
     @Autowired
-    private ObjectMapper objectMapper;
+    private JsonMapper jsonMapper;
 
     @BeforeEach
     void setUp() {
@@ -57,7 +57,7 @@ class OrderControllerUnitTests {
         mockMvc.perform(post("/api/orders")
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(request)))
+                        .content(jsonMapper.writeValueAsString(request)))
                 .andExpect(status().isBadRequest());
     }
 
