@@ -20,8 +20,8 @@
     <description>notification-service</description>
 
     <properties>
-        <java.version>21</java.version>
-        <spotless-maven-plugin.version>3.0.0</spotless-maven-plugin.version>
+        <java.version>25</java.version>
+        <spotless-maven-plugin.version>3.8.0</spotless-maven-plugin.version>
         <dockerImageName>sivaprasadreddy/bookstore-${project.artifactId}</dockerImageName>
     </properties>
 
@@ -191,7 +191,7 @@
                         <importOrder />
                         <removeUnusedImports />
                         <palantirJavaFormat>
-                            <version>2.74.0</version>
+                            <version>2.96.0</version>
                         </palantirJavaFormat>
                         <formatAnnotations />
                     </java>
