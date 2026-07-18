@@ -3,13 +3,17 @@ This repository contains the source code for the [Spring Boot Microservices Cour
 
 ![Spring Boot Microservices course](docs/youtube-thumbnail.png)
 
+> [!IMPORTANT]  
+> Current source code is updated to the latest version of Spring Boot. 
+> Check 'youtube' branch for the source code demonstrated in the original video series.
+
 We will build a BookStore application using Spring Boot, Spring Cloud, and Docker.
 
 ![BookStore Microservices Architecture](docs/bookstore-spring-microservices.png)
 
 ## Modules
 * **catalog-service**: 
-  This services provides REST API for managing catalog of products(books).
+  This service provides REST API for managing catalog of products(books).
   
   **TechStack:** Spring Boot, Spring Data JPA, PostgreSQL
 
@@ -29,7 +33,7 @@ We will build a BookStore application using Spring Boot, Spring Cloud, and Docke
   **TechStack:** Spring Boot, Spring Cloud Gateway
 
 * **bookstore-webapp**: 
-  This is the customer facing web application where customers can browse the catalog, place orders, and view their order details. 
+  This is the customer-facing web application where customers can browse the catalog, place orders, and view their order details. 
 
   **TechStack:** Spring Boot, Spring Security OAuth2, Keycloak, Thymeleaf, Alpine.js, Bootstrap
 
@@ -45,11 +49,11 @@ We will build a BookStore application using Spring Boot, Spring Cloud, and Docke
 * Creating Aggregated Swagger Documentation at API Gateway
 * Local Development Setup using Docker, Docker Compose and Testcontainers
 * Testing using JUnit 5, RestAssured, Testcontainers, Awaitility, WireMock
-* Building Web Application using Thymeleaf, Alpine.js, Bootstrap
+* Building a Web Application using Thymeleaf, Alpine.js, Bootstrap
 * Monitoring & Observability using Grafana, Prometheus, Loki, Tempo
 
 ## Local Development Setup
-* Install Java 21. Recommend using [SDKMAN](https://sdkman.io/) for [managing Java versions](https://youtu.be/ZywEiw3EO8A).
+* Install Java 25. Recommend using [SDKMAN](https://sdkman.io/) for [managing Java versions](https://youtu.be/ZywEiw3EO8A).
 * Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 * Install [IntelliJ IDEA](https://www.jetbrains.com/idea) or any of your favorite IDE
 * Install [Taskfile](https://taskfile.dev/) utility
@@ -58,7 +62,7 @@ We will build a BookStore application using Spring Boot, Spring Cloud, and Docke
 ```shell
 $ curl -s "https://get.sdkman.io" | bash
 $ source "$HOME/.sdkman/bin/sdkman-init.sh"
-$ sdk install java 24.0.1-tem
+$ sdk install java 25-tem
 $ sdk install maven
 $ brew install go-task
 (or)
