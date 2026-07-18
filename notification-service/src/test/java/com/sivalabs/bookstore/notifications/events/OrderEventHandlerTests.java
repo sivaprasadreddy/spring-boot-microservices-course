@@ -5,7 +5,6 @@ import static org.awaitility.Awaitility.await;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sivalabs.bookstore.notifications.AbstractIT;
 import com.sivalabs.bookstore.notifications.ApplicationProperties;
 import com.sivalabs.bookstore.notifications.domain.models.Address;
@@ -24,9 +23,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 class OrderEventHandlerTests extends AbstractIT {
     @Autowired
     RabbitTemplate rabbitTemplate;
-
-    @Autowired
-    ObjectMapper objectMapper;
 
     @Autowired
     ApplicationProperties properties;
