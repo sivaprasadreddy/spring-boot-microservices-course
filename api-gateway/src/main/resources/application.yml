@@ -11,9 +11,10 @@ management:
     tags:
         application: ${spring.application.name}
   tracing:
-    enabled: false
     sampling:
       probability: 1.0
+    export:
+      enabled: false
 
 spring:
   application:

@@ -114,7 +114,7 @@ You can start individual microservices by running their respective Test main ent
 ## Run the application with Observability Stack
 
 1. Start Grafana, Tempo, Loki, Prometheus using `$ task start_monitoring`
-2. Set `MANAGEMENT_TRACING_ENABLED=true` in `deployment/docker-compose/.env` file
+2. Set `MANAGEMENT_TRACING_EXPORT_ENABLED=true` in `deployment/docker-compose/.env` file
 3. Restart the application using `$ task restart`
 
 Now you can access the observability stack using the following URLs:
