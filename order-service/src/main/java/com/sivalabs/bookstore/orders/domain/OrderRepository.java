@@ -18,16 +18,14 @@ interface OrderRepository extends JpaRepository<OrderEntity, Long> {
         this.save(order);
     }
 
-    @Query(
-            """
+    @Query("""
         select new com.sivalabs.bookstore.orders.domain.models.OrderSummary(o.orderNumber, o.status)
         from OrderEntity o
         where o.userName = :userName
         """)
     List<OrderSummary> findByUserName(String userName);
 
-    @Query(
-            """
+    @Query("""
         select distinct o
         from OrderEntity o left join fetch o.items
         where o.userName = :userName and o.orderNumber = :orderNumber

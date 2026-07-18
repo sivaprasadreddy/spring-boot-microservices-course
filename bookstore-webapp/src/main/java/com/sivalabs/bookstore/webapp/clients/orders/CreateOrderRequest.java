@@ -8,6 +8,7 @@ import java.util.Set;
 
 public record CreateOrderRequest(
         @NotEmpty(message = "Items cannot be empty.") @NotNull(message = "Items cannot be null.") Set<OrderItem> items,
+
         @Valid Customer customer,
         @Valid Address deliveryAddress)
         implements Serializable {}

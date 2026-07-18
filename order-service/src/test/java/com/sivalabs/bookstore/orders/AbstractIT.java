@@ -52,15 +52,13 @@ public abstract class AbstractIT {
                 .willReturn(aResponse()
                         .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                         .withStatus(200)
-                        .withBody(
-                                """
+                        .withBody("""
                     {
                         "code": "%s",
                         "name": "%s",
                         "price": %f
                     }
-                """
-                                        .formatted(code, name, price.doubleValue()))));
+                """.formatted(code, name, price.doubleValue()))));
     }
 
     protected String getToken() {

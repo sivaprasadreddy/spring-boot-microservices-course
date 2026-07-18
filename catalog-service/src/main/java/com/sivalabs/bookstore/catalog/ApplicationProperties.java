@@ -7,4 +7,5 @@ import org.springframework.validation.annotation.Validated;
 
 @Validated
 @ConfigurationProperties(prefix = "catalog")
-public record ApplicationProperties(@DefaultValue("10") @Min(1) int pageSize) {}
+public record ApplicationProperties(
+        @DefaultValue("10") @Min(1) int pageSize) {}

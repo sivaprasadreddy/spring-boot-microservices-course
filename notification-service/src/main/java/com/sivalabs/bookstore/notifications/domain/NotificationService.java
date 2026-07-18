@@ -25,8 +25,7 @@ public class NotificationService {
     }
 
     public void sendOrderCreatedNotification(OrderCreatedEvent event) {
-        String message =
-                """
+        String message = """
                 ===================================================
                 Order Created Notification
                 ----------------------------------------------------
@@ -36,15 +35,13 @@ public class NotificationService {
                 Thanks,
                 BookStore Team
                 ===================================================
-                """
-                        .formatted(event.customer().name(), event.orderNumber());
+                """.formatted(event.customer().name(), event.orderNumber());
         log.info("\n{}", message);
         sendEmail(event.customer().email(), "Order Created Notification", message);
     }
 
     public void sendOrderDeliveredNotification(OrderDeliveredEvent event) {
-        String message =
-                """
+        String message = """
                 ===================================================
                 Order Delivered Notification
                 ----------------------------------------------------
@@ -54,15 +51,13 @@ public class NotificationService {
                 Thanks,
                 BookStore Team
                 ===================================================
-                """
-                        .formatted(event.customer().name(), event.orderNumber());
+                """.formatted(event.customer().name(), event.orderNumber());
         log.info("\n{}", message);
         sendEmail(event.customer().email(), "Order Delivered Notification", message);
     }
 
     public void sendOrderCancelledNotification(OrderCancelledEvent event) {
-        String message =
-                """
+        String message = """
                 ===================================================
                 Order Cancelled Notification
                 ----------------------------------------------------
@@ -73,15 +68,13 @@ public class NotificationService {
                 Thanks,
                 BookStore Team
                 ===================================================
-                """
-                        .formatted(event.customer().name(), event.orderNumber(), event.reason());
+                """.formatted(event.customer().name(), event.orderNumber(), event.reason());
         log.info("\n{}", message);
         sendEmail(event.customer().email(), "Order Cancelled Notification", message);
     }
 
     public void sendOrderErrorEventNotification(OrderErrorEvent event) {
-        String message =
-                """
+        String message = """
                 ===================================================
                 Order Processing Failure Notification
                 ----------------------------------------------------
@@ -92,8 +85,7 @@ public class NotificationService {
                 Thanks,
                 BookStore Team
                 ===================================================
-                """
-                        .formatted(properties.supportEmail(), event.orderNumber(), event.reason());
+                """.formatted(properties.supportEmail(), event.orderNumber(), event.reason());
         log.info("\n{}", message);
         sendEmail(properties.supportEmail(), "Order Processing Failure Notification", message);
     }
