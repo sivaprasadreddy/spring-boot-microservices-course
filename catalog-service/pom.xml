@@ -20,7 +20,7 @@
 	<properties>
 		<java.version>25</java.version>
 		<springdoc-openapi.version>3.0.3</springdoc-openapi.version>
-		<spotless-maven-plugin.version>3.8.0</spotless-maven-plugin.version>
+		<spotless-maven-plugin.version>3.9.0</spotless-maven-plugin.version>
 		<rest-assured.version>6.0.1</rest-assured.version>
 		<dockerImageName>sivaprasadreddy/bookstore-${project.artifactId}</dockerImageName>
 	</properties>
