@@ -23,7 +23,7 @@
         <java.version>25</java.version>
         <spring-cloud.version>2025.1.2</spring-cloud.version>
         <springdoc-openapi.version>3.0.3</springdoc-openapi.version>
-        <spotless-maven-plugin.version>3.8.0</spotless-maven-plugin.version>
+        <spotless-maven-plugin.version>3.9.0</spotless-maven-plugin.version>
         <dockerImageName>sivaprasadreddy/bookstore-${project.artifactId}</dockerImageName>
     </properties>
 
